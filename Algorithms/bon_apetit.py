@@ -1,0 +1,5 @@
+n, k = map(int, input().split(" "))
+cost = list(map(int, input().split(" ")))
+charged = int(input())
+diff = charged - (sum(cost[:k] + cost[k+1:]) / 2)
+print("Bon Appetit" if not diff else int(diff))

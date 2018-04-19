@@ -1,0 +1,7 @@
+s, t = map(int, input().split(" "))
+a, b = map(int, input().split(" "))
+m, n = map(int, input().split(" "))
+apples = list(map(int, input().split(" ")))
+oranges = list(map(int, input().split(" ")))
+print(len([1 for d in apples if s <= a + d <= t]))
+print(len([1 for d in oranges if s <= b + d <= t]))

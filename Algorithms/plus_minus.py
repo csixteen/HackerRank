@@ -1,0 +1,5 @@
+n = int(input())
+a = list(map(int, input().split(" ")))
+print(len(list(filter(lambda x: x > 0, a))) / n)
+print(len(list(filter(lambda x: x < 0, a))) / n)
+print(len(list(filter(lambda x: x == 0, a))) / n)
