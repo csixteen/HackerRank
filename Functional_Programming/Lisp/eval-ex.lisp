@@ -1,7 +1,7 @@
 ;; https://www.hackerrank.com/challenges/eval-ex/problem
 (defun eval-ex (x)
   (labels ((fact (n) (if (= n 1) 1 (* n (fact (1- n))))))
-    (+ 0 (loop for i
+    (+ 1 (loop for i
 	       from 1 to 9
 	       sum (/ (expt x i) (fact i))))))
 
