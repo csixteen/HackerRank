@@ -1,4 +1,8 @@
 ;; https://www.hackerrank.com/challenges/eval-ex/problem
+;; Force the usage of double precision, as opposed to the default
+;; single precision.
+(setq *read-default-float-format* 'double-float)
+
 (defun eval-ex (x)
   (labels ((fact (n) (if (= n 1) 1 (* n (fact (1- n))))))
     (+ 1 (loop for i
