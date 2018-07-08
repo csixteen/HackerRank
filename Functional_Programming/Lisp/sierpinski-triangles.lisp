@@ -1,3 +1,4 @@
+;; work in progress
 (defun print-fractal (j)
   (loop for x
 	from 1 to j do
