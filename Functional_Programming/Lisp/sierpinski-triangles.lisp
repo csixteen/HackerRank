@@ -1,3 +1,4 @@
+;; 15/07/2018
 ;; work in progress
 (defun print-fractal (j)
   (loop for x
