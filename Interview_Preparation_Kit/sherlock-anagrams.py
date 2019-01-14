@@ -1,21 +1,34 @@
-from collections import Counter
+from array import array
 
 
 def isAnagram(a, b):
-    return Counter(a) == Counter(b)
+    N = len(a)
+    arr_a = array('i', [0]*26)
+    arr_b = array('i', [0]*26)
+    for i in range(N):
+        arr_a[ord(a[i]) - ord('a')] += 1
+        arr_b[ord(b[i]) - ord('a')] += 1
+
+    for i in range(26):
+        if arr_a[i] != arr_b[i]:
+            return False
+    return True
 
 def countAnagrams(a, b):
     len_a, len_b = len(a), len(b)
-    if len_a > len_b:
-        return 0
-    count = 1 if isAnagram(a, b[:len_a]) else 0
-    return count + countAnagrams(a, b[1:])
+    j= total= 0
+    while j <= len_b - len_a:
+        if isAnagram(a, b[j:j+len_a]):
+            total += 1
+        j += 1
+    return total
 
 def countAllAnagrams(a, stop, b):
-    if stop == len(a) or len(a[:stop]) > len(b):
-        return 0
-    else:
-        return countAnagrams(a[:stop], b) + countAllAnagrams(a, stop+1, b)
+    total = 0
+    while stop < len(a) and len(a[:stop]) <= len(b):
+        total += countAnagrams(a[:stop], b)
+        stop += 1
+    return total
 
 def sherlockAndAnagrams(s):
     total = 0
