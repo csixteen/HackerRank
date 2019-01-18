@@ -3,10 +3,6 @@ from collections import deque
 
 def isBalanced(s):
     brackets_close = {')': '(', '}': '{', ']': '['}
-
-    if len(s) == 1 or s[0] in brackets_close:
-        return 'NO'
-
     stack = deque(s[0])
     for c in s[1:]:
         if c in brackets_close:
