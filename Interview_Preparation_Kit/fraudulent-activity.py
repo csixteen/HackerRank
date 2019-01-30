@@ -1,16 +1,10 @@
 # coding: utf-8
 from array import array
+from bisect import insort, bisect_left
 
 
-def mean(arr, d):
-    if d % 2 == 0:
-        return (arr[(d // 2)-1] + arr[d // 2]) / 2
-    else:
-        return arr[d // 2]
-
-
-def ki_sort(arr, mx, d):
-    R = mx + 2
+def ki_sort(arr, d):
+    R = max(arr) + 2
     freq = array('I', [0] * R)
 
     for n in arr:
@@ -28,17 +22,19 @@ def ki_sort(arr, mx, d):
 
 
 def fraudulent_activity(arr, n, d):
-    mv = memoryview(array('I', arr))
-    mx = max(mv)
-    trail = ki_sort(mv[:d], mx, d)
-    m = mean(trail, d)
+    mv = array('I', arr)
+    trail = ki_sort(mv[:d], d)
     total = 0
 
-    for i in range(d, n):
-        trail = ki_sort(mv[i-d:i], mx, d)
-        m = mean(trail, d)
-        if arr[i] >= 2*m:
+    for i, curr in enumerate(mv[d:]):
+        to_remove = mv[i]
+        if (d % 2 == 0) and (curr >= trail[d>>1] + trail[(d>>1) - 1]):
             total += 1
+        elif curr >= trail[d>>1] << 1:
+            total += 1
+        j = bisect_left(trail, to_remove)
+        del trail[j]
+        insort(trail, curr)
 
     return total
 
