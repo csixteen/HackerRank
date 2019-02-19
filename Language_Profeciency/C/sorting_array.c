@@ -41,6 +41,9 @@ void string_sort(char** arr,const int len,int (*cmp_func)(const char* a, const c
                 arr[j] = arr[j-1];
                 arr[j-1] = tmp;
             }
+            else {
+                break;
+            }
         }
     }
 }
