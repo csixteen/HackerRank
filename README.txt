@@ -7,6 +7,6 @@
                                                       
 ========================================================
 
-My solutions to HackerRank problems in C, Common Lisp, C++, Erlang and Python3.
+My solutions to HackerRank problems in C, Common Lisp, C++, Erlang, Haskell and Python3.
 
 https://www.hackerrank.com/csixteen
